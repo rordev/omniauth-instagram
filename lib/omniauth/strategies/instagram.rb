@@ -15,7 +15,7 @@ module OmniAuth
         super
       end
 
-      uid { raw_info['user'] }
+      uid { raw_info['id'] }
 
       info do
         {
@@ -29,7 +29,7 @@ module OmniAuth
       end
 
       def raw_info
-        @data ||= access_token.params["user"]
+        @data ||= access_token.params["data"]
         unless @data
           access_token.options[:mode] = :query
           access_token.options[:param_name] = "access_token"
